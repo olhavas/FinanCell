@@ -1,0 +1,32 @@
+# Build files
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Compiled object files
+*.o
+*.obj
+*.exe
+*.out
+*.so
+*.a
+*.dll
+
+# MacOS system files
+.DS_Store
+
+# VS Code settings
+.vscode/
+
+# Logs
+*.log
+
+# User-specific
+*.swp
+*~
+
+# Clangd index/cache
+.cache/
+.clangd/
