@@ -93,17 +93,22 @@ void UserInterface::chooseOption()
 
 void UserInterface::run()
 {
+    Logger::instance()->log(INFO, "Entry." );
     std::string path= "resources/expenses.csv";
     if(SUCCESS != manager.loadExpensesFromFile(path))
     {
         uiHandler.output("Error: Cannot recover data from file.\n");
-        uiHandler.error("Cannot recover data from file.\n");
+        Logger::instance()->log(ERROR, "Cannot recover data from file." );
 
     }
     while (!exit)
     {
         showMenu();
         chooseOption();
+    }
+    if(exit)
+    {
+        Logger::instance()->log(INFO, "Exit." );
     }
 }
 

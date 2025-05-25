@@ -2,9 +2,10 @@
 
 // for future: dependency injection
 
-ExpenseFileHandler::ExpenseFileHandler()
+ExpenseFileHandler::ExpenseFileHandler(std::unique_ptr<IExportStrategy> s) : strategy(std::move(s))
     
 {
+    
 }
 /*
 FileExporter::~FileExporter()
@@ -13,23 +14,8 @@ FileExporter::~FileExporter()
 */
 IOStatus ExpenseFileHandler::saveToFile(const std::vector<Expense> &expenses, const std::string &filename)
 {
-    std::ofstream file(filename);
-
-
-    if (!file.is_open())
-    {
-        return FILE_NOT_OPEN;
-    }
-
-    file << "Amount [zl]" << "," << "Description" << "\n";
-    for (const auto &e : expenses)
-    {
-        file <<e.amount << "," << e.description << "\n";
-    }
-   
-
-    file.close();
-    return SUCCESS;
+    return strategy->save(expenses, filename);
+    
 }
 
 

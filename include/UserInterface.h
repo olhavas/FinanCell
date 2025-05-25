@@ -4,6 +4,7 @@
 
 #include "ExpenseValidator.h"
 #include "ExpenseManager.h"
+#include "Logger.h"
 
 
 class UserInterface
