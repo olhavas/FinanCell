@@ -3,7 +3,15 @@
 
 Logger::Logger(const std::string &filename)
 {
-    logFile.open(filename, std::ios::app);
+
+    std::string path = "../log";
+
+    if (!path.empty() && !fs::exists(path)) 
+    {
+            fs::create_directories(path);
+    }
+    path = path+'/'+filename;
+    logFile.open(path, std::ios::app);
     if (!logFile.is_open())
     {
         std::cerr << "Error opening log file." << std::endl;
@@ -73,7 +81,7 @@ Logger* Logger::instance()
     std::string str(timestamp);
 
     if(inst==nullptr){
-        inst = new Logger("logfile"+str+".txt");
+        inst = new Logger("logfile"+str+".log");
     }
 
     return inst;

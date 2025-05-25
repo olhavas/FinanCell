@@ -6,6 +6,8 @@
 #include <iostream>
 #include <sstream>
 
+namespace fs = std::filesystem;
+
 enum LogLevel { DEBUG, INFO, WARNING, ERROR, CRITICAL };
 
 class Logger 

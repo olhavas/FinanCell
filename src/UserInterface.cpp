@@ -69,8 +69,10 @@ void UserInterface::chooseOption()
         }
         fullpath = directory + "/"+filename;
 
-        if (!directory.empty() && !fs::exists(directory)) {
-        fs::create_directories(directory);}
+        if (!directory.empty() && !fs::exists(directory)) 
+        {
+            fs::create_directories(directory);
+        }
 
         if(IOStatus::SUCCESS == manager.saveExpensesToFile(fullpath)) 
         {

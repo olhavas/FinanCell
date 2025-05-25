@@ -25,6 +25,7 @@ IOStatus ExpenseFileHandler::loadFromFile(std::vector<Expense>& expenses, const 
 
     if (!file.is_open())
     {
+        Logger::instance()->log(ERROR, "Failed to load file: "+filename+ ".");
         return FILE_NOT_OPEN;
     }
     
@@ -49,6 +50,7 @@ IOStatus ExpenseFileHandler::loadFromFile(std::vector<Expense>& expenses, const 
             expenses.emplace_back(Expense{amount, description});
         } catch (const std::exception&) {
             // Możesz dodać log błędu lub zwrócić kod błędu
+            Logger::instance()->log(WARNING, "Cannot load data from file.");
             continue;
         }
     }

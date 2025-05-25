@@ -6,6 +6,7 @@
 #include "Expense.h"
 #include "IFileHandler.h"
 #include "IExportStrategy.h"
+#include "Logger.h"
 
 
 namespace fs = std::filesystem;
