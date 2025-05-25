@@ -15,8 +15,7 @@ add_executable(FinanCell
    ${SOURCES}
    )
 
-
-
+# --- JSON ---
 include(FetchContent)
 FetchContent_Declare(
   json
@@ -27,12 +26,12 @@ FetchContent_MakeAvailable(json)
 
 target_link_libraries(FinanCell PRIVATE nlohmann_json::nlohmann_json)
 
+# --- TESTS ---
 file(GLOB TEST_SOURCES "tests/*.cpp")
 
 add_subdirectory(external/googletest)
 
 enable_testing()
-
 
 add_executable(Tests
     ${TEST_SOURCES}
@@ -47,5 +46,4 @@ target_link_libraries(Tests PRIVATE
     nlohmann_json::nlohmann_json
 )
 
-# Uruchom testy (ctest automatycznie je wykrywa)
 add_test(NAME AllTests COMMAND Tests)
