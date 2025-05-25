@@ -2,11 +2,12 @@
 #include "UserInterface.h"
 #include "ExpenseFileHandler.h"
 #include "CSVExportStrategy.h"
+#include "JSONExportStrategy.h"
 
 int main()
 {
 
-    ExpenseFileHandler fileHandler(std::make_unique<CSVExportStrategy>());
+    ExpenseFileHandler fileHandler(std::make_unique<JSONExportStrategy>());
     ExpenseManager manager(fileHandler);
     UserInterface UI(manager);
     UI.run();
